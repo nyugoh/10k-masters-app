@@ -5,11 +5,12 @@ import { Form, Segment, Button, Message } from 'semantic-ui-react';
 class LoginForm extends Component {
 	state = {
 		data:{},
-		errors: {},
+		errors: this.props.errors,
 		loading: false
 	};
 
 	submit = ()=> {
+		this.setState({ loading: true });
 		this.props.submit(this.state.data);
 	};
 
@@ -18,9 +19,9 @@ class LoginForm extends Component {
 	};
 
 	render() {
-		const { errors } = this.state;
+		const { loading } = this.state;
 		return<Segment>
-			<Form onSubmit={this.submit}>
+			<Form onSubmit={this.submit} loading={loading}>
 				<Form.Field>
 					<Form.Input fluid required
 								name='email'
@@ -38,13 +39,8 @@ class LoginForm extends Component {
 								placeholder='Password...'
 					/>
 				</Form.Field>
-				{errors && <Message error>
-					<Message.Header>Errors</Message.Header>
-					<Message.Content>
-						errors.forEach(error => {
-						<p>error.message</p>
-					})
-					</Message.Content>
+				{this.props.errors && <Message error>
+				<p>Incorrect email or password.</p>
 				</Message>}
 				<Button className='instagram' fluid type='submit'>LOGIN</Button>
 				<p style={pStyles}>
