@@ -1,4 +1,5 @@
-
+import { combineReducers } from 'redux';
+import user from './user';
 
 const rootReducer = (state=[], action={}) => {
 	switch (action.type){
@@ -6,5 +7,4 @@ const rootReducer = (state=[], action={}) => {
 	}
 };
 
-
-export default rootReducer;
+export default combineReducers({rootReducer, user});

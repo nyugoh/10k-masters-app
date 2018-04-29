@@ -1,10 +1,12 @@
 import React, {Component} from "react";
+import { connect } from 'react-redux';
 import LoginForm from "../forms/Login";
 import { Grid } from 'semantic-ui-react';
+import { login } from '../actions/login';
 
 class Login extends Component {
 	submit = data =>{
-		console.log(data);
+		this.props.login(data);
 	};
 
 	render() {
@@ -23,4 +25,4 @@ class Login extends Component {
 	}
 }
 
-export default Login;
+export default connect(null, {login})(Login);

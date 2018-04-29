@@ -10,12 +10,7 @@ class LoginForm extends Component {
 	};
 
 	submit = ()=> {
-		if (this.state.data.confirmed)
-			this.props.submit(this.state.data);
-		else {
-			console.log('error');
-			this.setState({ errors: { ...this.state.errors, confirmed: 'Confirm the details provided.' } });
-		}
+		this.props.submit(this.state.data);
 	};
 
 	handleChange  = (e)=> {
@@ -38,6 +33,7 @@ class LoginForm extends Component {
 					<Form.Input fluid required
 								name='password'
 								onChange={this.handleChange}
+								type='password'
 								label='Password'
 								placeholder='Password...'
 					/>
