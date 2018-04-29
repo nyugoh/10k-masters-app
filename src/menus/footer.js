@@ -4,6 +4,7 @@ import { Grid, List, Icon } from 'semantic-ui-react';
 function footer() {
 	return (
 		<div>
+      <br/>
 			<hr/>
 			<Grid>
 				<Grid.Row>
