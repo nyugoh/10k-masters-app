@@ -14,7 +14,7 @@ function footer() {
 							<List.Item as='a'>Privacy</List.Item>
 							<List.Item as='a'>Help</List.Item>
 						</List>
-						<Icon name='circled github' id="footer-center"/>
+						<Icon name='github' circular id="footer-center"/>
 						<List bulleted horizontal id="footer-right">
 							<List.Item as='a'>About Us</List.Item>
 							<List.Item as='a'>Sitemap</List.Item>
