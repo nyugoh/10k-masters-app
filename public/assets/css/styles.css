@@ -1,0 +1,15 @@
+.main-menu {
+    padding-top: 20px;
+    margin-bottom: 10px;
+}
+.home {
+    color: #139048ba !important;
+}
+
+/* Footer menus*/
+#footer-left  a {
+    margin: 10px !important;
+}
+#footer-center a { margin: 10px !important; text-align: center !important; }
+
+#footer-right   { margin: 10px !important; text-align: right !important; }
