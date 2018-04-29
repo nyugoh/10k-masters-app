@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import { connect } from 'react-redux';
 import LoginForm from "../forms/Login";
 import { Grid } from 'semantic-ui-react';
-import { login } from '../actions/login';
+import { login } from '../actions/auth';
 
 class Login extends Component {
 	submit = data =>{

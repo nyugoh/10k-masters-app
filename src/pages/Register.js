@@ -1,10 +1,12 @@
 import React, {Component} from "react";
+import { connect } from 'react-redux';
 import { Grid } from 'semantic-ui-react';
 import RegisterForm from "../forms/Register";
+import { register } from '../actions/auth';
 
 class Register extends Component {
 	submit = data => {
-		console.log(data);
+		this.props.register(data).then( ()=> this.props.history.push('/'));
 	};
 
 	render() {
@@ -23,4 +25,4 @@ class Register extends Component {
 	}
 }
 
-export default Register;
+export default connect(null, { register })(Register);
