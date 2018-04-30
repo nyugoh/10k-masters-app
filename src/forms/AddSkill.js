@@ -28,7 +28,7 @@ class AddSkill extends Component {
           <Form.Field>
             <label>Skill name</label>
             <Input
-              name='skillName'
+              name='subject'
                    placeholder='Short & memorable name...'
             onChange={this.handleChange}/>
           </Form.Field>
@@ -37,7 +37,7 @@ class AddSkill extends Component {
         <div className="ui divider"/>
         <Form.Field>
           <Form.Input fluid
-                      name='skillDescription'
+                      name='description'
                       label='Description (Optional)'
                       placeholder='A brief description..'
                       onChange={this.handleChange}
@@ -46,10 +46,10 @@ class AddSkill extends Component {
         <div className="ui divider"/>
         <Form.Group widths='equal'>
           <Form.Input
-            name='days'
+            name='hours'
             type='number'
-            placeholder='60 is a good number...'
-            label='Set days to finish'
+            placeholder='1000 hours is a good number...'
+            label='Set hours to finish'
             onChange={this.handleChange}
           />
           <Form.Input
