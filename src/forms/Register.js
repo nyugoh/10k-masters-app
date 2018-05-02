@@ -55,6 +55,7 @@ class RegisterForm extends Component {
 								name='password'
 								onChange={this.handleChange}
 								label='Password'
+								type='password'
 								placeholder='Password...'
 					/>
 				</Form.Group>
