@@ -11,7 +11,7 @@ class Login extends Component {
 
 	submit = data =>{
 		this.props.login(data).then( () => {
-			this.props.history.push('/skills')
+			this.props.history.push('/skills/add')
 		}).catch( error => {
 			this.setState({ errors: error })
 		});

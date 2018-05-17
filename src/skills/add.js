@@ -5,11 +5,12 @@ import AddSkillForm from '../forms/AddSkill';
 import { add } from '../actions/skill';
 
 class AddSkill extends Component {
-  submit = (skill) => {
+  submit = skill => {
+    skill.user = localStorage.getItem('id_token');
     this.props.add(skill).then( ()=> {
-
+      this.props.history.push('/skills/list');
     }).catch( error => {
-
+      console.log("Error", error);
     });
   };
 

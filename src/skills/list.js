@@ -5,7 +5,7 @@ class SkillList extends Component {
     return (
       <div>
         <h2>Masters page</h2>
-        <div style={positionStyles}>
+        <div>
           <i id="addSkillButton" onclick="" className="ui circular green icon add large"/>
         </div>
         <h2>Create a new skill </h2>
@@ -15,8 +15,6 @@ class SkillList extends Component {
     );
   }
 }
-const positionStyles = {
-  position: 'relative'
-};
+
 
 export default SkillList;
