@@ -8,6 +8,11 @@ const skills = (state=[], action={}) =>{
             ...state,
               payload
           ];
+    case types.SKILLS_FETCHED:
+      return [
+        ...state,
+        ...payload
+      ];
     default: return state;
   }
 };

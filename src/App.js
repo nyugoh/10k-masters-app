@@ -6,7 +6,9 @@ import Register from './pages/Register';
 import Skills from "./pages/Skills";
 import Menu from './menus/main';
 import Footer from './menus/footer';
-
+import { fetch } from './actions/skill';
+import Store from './store';
+Store.dispatch(fetch());
 
 class App extends Component {
   render() {
