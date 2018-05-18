@@ -17,8 +17,9 @@ export const fetch = () => (dispatch) => axios.get(`${base}/get`).then( response
   });
 });
 
-export const remove = (id) => (dispatch) => axios.delete(`${base}/remove`, {id}).then( response => {
+export const remove = (id) => (dispatch) => axios.delete(`${base}/remove/${id}`).then( response => {
   dispatch({
-    type: types.SKILL_DELETED
+    type: types.SKILL_DELETED,
+    payload: response.data.id
   });
 });

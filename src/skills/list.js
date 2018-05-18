@@ -13,7 +13,7 @@ class SkillList extends Component {
 	};
 
 	removeSkill = id => {
-		remove(id).then( () => {
+		this.props.remove(id).then( () => {
 			// TODO :: Display success
 		}).catch( error => {
 			// TODO:: Display error
@@ -40,4 +40,6 @@ const mapStateToProps = state => ({
 	skills: state.skill
 });
 
-export default connect(mapStateToProps)(SkillList);
+const mapDispatchToProps = () => ({ remove });
+
+export default connect(mapStateToProps, { remove })(SkillList);

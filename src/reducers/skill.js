@@ -13,6 +13,13 @@ const skills = (state=[], action={}) =>{
         ...state,
         ...payload
       ];
+    case types.SKILL_DELETED:
+      let skills = [];
+      state.map( skill => {
+        if( skill._id !== payload)
+          skills.push(skill);
+      });
+      return skills;
     default: return state;
   }
 };
