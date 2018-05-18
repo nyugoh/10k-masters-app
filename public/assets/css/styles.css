@@ -21,3 +21,11 @@ textarea { resize: none; }
 #footer-center a { margin: 10px !important; text-align: center !important; }
 
 #footer-right   { margin: 10px !important; text-align: right !important; }
+
+.visible.transition {
+    margin-top: auto !important;
+    display: inline-block !important;
+    position: relative;
+    top: 20%;
+    left:10%;
+}
