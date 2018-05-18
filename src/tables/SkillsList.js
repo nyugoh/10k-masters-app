@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Table, Button } from 'semantic-ui-react';
+import { Header, Table, Button, Label } from 'semantic-ui-react';
 
 const SkillsList = ({ skills, editSkill, removeSkill, archiveSkill }) => (
 	<Table celled padded>
@@ -19,6 +19,8 @@ const SkillsList = ({ skills, editSkill, removeSkill, archiveSkill }) => (
 				return (
 					<Table.Row key={index}>
 						<Table.Cell>
+							{skill.status==0 && <Label color='orange' ribbon>Paused</Label>}
+							{skill.status==1 && <Label color='green' ribbon>Active</Label>}
 							<Header as='h4' textAlign='center'>{skill.subject}</Header>
 						</Table.Cell>
 						<Table.Cell singleLine>{skill.hours}</Table.Cell>

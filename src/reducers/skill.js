@@ -20,6 +20,15 @@ const skills = (state=[], action={}) =>{
           skills.push(skill);
       });
       return skills;
+    case types.SKILL_ARCHIVED:
+      skills = [];
+			state.map( skill => {
+				if( skill._id === payload._id)
+					skills.push(payload);
+				else
+				  skills.push(skill);
+			});
+			return skills;
     default: return state;
   }
 };

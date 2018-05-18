@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import SkillsList from '../tables/SkillsList';
-import { remove } from '../actions/skill';
+import { remove, archiveSkill } from '../actions/skill';
 
 class SkillList extends Component {
 	editSkill = id => {
@@ -9,7 +9,11 @@ class SkillList extends Component {
 	};
 
 	archiveSkill = id => {
-		console.log(id);
+		this.props.archiveSkill(id).then( () => {
+			// TODO flag as archived
+		}).catch( error => {
+			alert(error);
+		});
 	};
 
 	removeSkill = id => {
@@ -40,6 +44,4 @@ const mapStateToProps = state => ({
 	skills: state.skill
 });
 
-const mapDispatchToProps = () => ({ remove });
-
-export default connect(mapStateToProps, { remove })(SkillList);
+export default connect(mapStateToProps, { remove, archiveSkill })(SkillList);
