@@ -1,5 +1,6 @@
 import React from 'react';
-import { Header, Table, Button, Label } from 'semantic-ui-react';
+import { Header, Table, Button, Label, Modal } from 'semantic-ui-react';
+import EditSkillForm from '../forms/EditSkillForm';
 
 const SkillsList = ({ skills, editSkill, removeSkill, archiveSkill }) => (
 	<Table celled padded>
@@ -35,11 +36,17 @@ const SkillsList = ({ skills, editSkill, removeSkill, archiveSkill }) => (
 							{skill.goals}
 						</Table.Cell>
 						<Table.Cell>
-							<Button
+							<Modal size='medium' trigger={<Button
 								inverted
 								color='blue'
-								icon='edit'
-							onClick={editSkill.bind(this, skill._id)}/>
+								icon='edit'/>}>
+								<Modal.Header>
+									Edit {skill.subject}
+								</Modal.Header>
+								<Modal.Content>
+									<EditSkillForm skill={skill} save={editSkill.bind(this, skill._id)}/>
+								</Modal.Content>
+							</Modal>
 							<Button
 								inverted
 								color='green'
