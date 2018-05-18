@@ -1,7 +1,7 @@
 import React from 'react';
-import { Header, Table, Rating } from 'semantic-ui-react';
+import { Header, Table, Button } from 'semantic-ui-react';
 
-const SkillsList = ({ skills }) => (
+const SkillsList = ({ skills, editSkill, removeSkill, archiveSkill }) => (
 	<Table celled padded>
 		<Table.Header>
 			<Table.Row>
@@ -10,13 +10,14 @@ const SkillsList = ({ skills }) => (
 				<Table.HeaderCell>Description</Table.HeaderCell>
 				<Table.HeaderCell>Progress</Table.HeaderCell>
 				<Table.HeaderCell>Milestones</Table.HeaderCell>
+				<Table.HeaderCell>Actions</Table.HeaderCell>
 			</Table.Row>
 		</Table.Header>
 
 		<Table.Body>
 			{skills.map((skill, index) => {
 				return (
-					<Table.Row id={index}>
+					<Table.Row key={index}>
 						<Table.Cell>
 							<Header as='h4' textAlign='center'>{skill.subject}</Header>
 						</Table.Cell>
@@ -30,6 +31,23 @@ const SkillsList = ({ skills }) => (
 						</Table.Cell>
 						<Table.Cell>
 							{skill.goals}
+						</Table.Cell>
+						<Table.Cell>
+							<Button
+								inverted
+								color='blue'
+								icon='edit'
+							onClick={editSkill.bind(this, skill._id)}/>
+							<Button
+								inverted
+								color='green'
+								icon='archive'
+							onClick={archiveSkill.bind(this, skill._id)}/>
+							<Button
+								inverted
+								color='red'
+								icon='trash'
+							onClick={removeSkill.bind(this, skill._id)}/>
 						</Table.Cell>
 					</Table.Row>
 				);
