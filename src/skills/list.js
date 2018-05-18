@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import SkillsList from '../tables/SkillsList';
+import { remove } from '../actions/skill';
 
 class SkillList extends Component {
 	editSkill = id => {
@@ -12,7 +13,11 @@ class SkillList extends Component {
 	};
 
 	removeSkill = id => {
-		console.log(id);
+		remove(id).then( () => {
+			// TODO :: Display success
+		}).catch( error => {
+			// TODO:: Display error
+		});
 	};
 
   render() {
