@@ -1,13 +1,9 @@
 import * as types from '../consts';
 
 const skills = (state=[], action={}) =>{
-  const { type, payload } = action;
+  const { type, payload, id } = action;
   switch (type) {
-      case types.SKILL_ADDED:
-        return  [
-            ...state,
-              payload
-          ];
+		case types.SKILL_ADDED:
     case types.SKILLS_FETCHED:
       return [
         ...state,
@@ -16,7 +12,7 @@ const skills = (state=[], action={}) =>{
     case types.SKILL_DELETED:
       let skills = [];
       state.map( skill => {
-        if( skill._id !== payload)
+        if( skill._id !== id)
           skills.push(skill);
       });
       return skills;
