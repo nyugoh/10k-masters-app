@@ -9,3 +9,5 @@ export const SKILLS_FETCHED = 'SKILLS_FETCHED';
 export const SKILL_DELETED = 'SKILL_DELETED';
 
 export const SKILL_ARCHIVED = 'SKILL_ARCHIVED';
+
+export const SKILL_EDITED = 'SKILL_EDITED';

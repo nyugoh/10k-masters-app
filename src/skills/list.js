@@ -1,11 +1,21 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import SkillsList from '../tables/SkillsList';
-import { remove, archiveSkill } from '../actions/skill';
+import { edit, remove, archiveSkill } from '../actions/skill';
 
 class SkillList extends Component {
-	editSkill = id => {
-		console.log(id);
+	state = { modalOpen: false };
+
+	handleOpen = () => this.setState({ modalOpen: true });
+
+	handleClose = () => this.setState({ modalOpen: false });
+
+	editSkill = skill => {
+		this.props.edit(skill).then( () => {
+			// TODO flag as edited
+		}).catch( error => {
+			alert(error);
+		});
 	};
 
 	archiveSkill = id => {
@@ -32,6 +42,9 @@ class SkillList extends Component {
         <div className="ui divider"/>
 				<SkillsList
 					skills={this.props.skills}
+					modalState={this.state}
+					handleClose={this.handleClose}
+					handleOpen={this.handleOpen}
 					editSkill={this.editSkill}
 					archiveSkill={this.archiveSkill}
 					removeSkill={this.removeSkill}/>
@@ -44,4 +57,4 @@ const mapStateToProps = state => ({
 	skills: state.skill
 });
 
-export default connect(mapStateToProps, { remove, archiveSkill })(SkillList);
+export default connect(mapStateToProps, { edit, remove, archiveSkill })(SkillList);

@@ -18,8 +18,14 @@ export default class Main extends Component {
 					</h2>
 				</Menu.Item>
 					<Menu.Item name='skills' active={activeItem === 'skills'} onClick={this.handleItemClick}>
-						<Link to={'/skills'}>Skills</Link>
+						<Link to={'/skills/list'}>Skills List</Link>
 					</Menu.Item>
+				<Menu.Item name='skills' active={activeItem === 'skills'} onClick={this.handleItemClick}>
+					<Link to={'/skills/add'}>Skills Add</Link>
+				</Menu.Item>
+				<Menu.Item name='skills' active={activeItem === 'skills'} onClick={this.handleItemClick}>
+					<Link to={'/skills'}>Skills</Link>
+				</Menu.Item>
 				<Menu.Item name='targets' active={activeItem === 'targets'} onClick={this.handleItemClick}>
 					<Link to={'/targets'}>Targets</Link>
 				</Menu.Item>

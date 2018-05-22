@@ -4,6 +4,10 @@ const skills = (state=[], action={}) =>{
   const { type, payload, id } = action;
   switch (type) {
 		case types.SKILL_ADDED:
+			return [
+				...state,
+				payload
+			];
     case types.SKILLS_FETCHED:
       return [
         ...state,
@@ -16,6 +20,7 @@ const skills = (state=[], action={}) =>{
           skills.push(skill);
       });
       return skills;
+		case types.SKILL_EDITED:
     case types.SKILL_ARCHIVED:
       skills = [];
 			state.map( skill => {

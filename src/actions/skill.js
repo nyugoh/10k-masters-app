@@ -30,3 +30,10 @@ export const archiveSkill = id => dispatch => axios.post(`${base}/archive/${id}`
     payload: response.data.skill
   });
 });
+
+export const edit = (skill) => ( dispatch) => axios.put(`${base}/edit`, { skill }).then( response => {
+	dispatch({
+		type: types.SKILL_EDITED,
+		payload: response.data.skill
+	});
+});
