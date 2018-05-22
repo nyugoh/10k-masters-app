@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Header, Table, Button, Label, Modal } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import EditSkillForm from '../forms/EditSkillForm';
 
 class SkillsList extends Component {
@@ -25,7 +26,12 @@ class SkillsList extends Component {
 								<Table.Cell>
 									{skill.status===0 && <Label color='orange' ribbon>Paused</Label>}
 									{skill.status===1 && <Label color='green' ribbon>Active</Label>}
-									<Header as='h4' textAlign='center'>{skill.subject}</Header>
+									<Header
+										as='h4'
+										textAlign='center'
+									>
+										<Link to={`/skills/${skill._id}/${skill.subject}`}>{skill.subject}</Link>
+									</Header>
 								</Table.Cell>
 								<Table.Cell singleLine>{skill.hours}</Table.Cell>
 								<Table.Cell singleLine>
