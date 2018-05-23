@@ -3,6 +3,8 @@ import { Segment, Label, Header, Progress, Grid, Rating } from 'semantic-ui-reac
 
 class ProgressBar extends Component {
     render() {
+        const { status } = this.props.session;
+        const isActive = status === 'in-progress';
         return (
             <Segment className={'center aligned'}>
                 <Grid>
@@ -16,7 +18,7 @@ class ProgressBar extends Component {
                     </Grid.Row>
                     <Grid.Row columns={1} centered>
                         <Grid.Column width={'ten'} className={'center aligned'}>
-                            <Progress value='4' total='5' progress='percent' style={{backgroundColor: this.props.skill.theme}} color={'green'} active={true} />
+                            <Progress value='4' total='5' progress='percent' style={{backgroundColor: this.props.skill.theme}} color={'green'} active={isActive} />
                             <Header as={'h4'}>Milestones achieved <Rating icon='star' defaultRating={1} maxRating={3} size={'massive'} disabled/></Header>
                         </Grid.Column>
                     </Grid.Row>

@@ -46,7 +46,9 @@ class Skill extends Component {
 					</Header>
 					<div className="ui divider"/>
 					<CountDown/>
-					<Progress skill={skill}/>
+					<Progress
+						session={session}
+						skill={skill}/>
 					<br/>
 					<Segment className={'ui center aligned'} >
 						<TimeControls
