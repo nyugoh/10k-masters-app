@@ -1,7 +1,14 @@
 import React, {Component} from 'react';
-import { Segment, Button, Icon, Message } from 'semantic-ui-react';
+import { Form, TextArea, Button, Icon, Message } from 'semantic-ui-react';
 
 class TimeControls extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            notes: ''
+        };
+    };
+
     startSession = () =>{
         this.props.startSession();
     };
@@ -16,6 +23,14 @@ class TimeControls extends Component {
 
     endSession = () =>{
         this.props.endSession();
+    };
+
+    submit = () =>{
+      this.props.addNotes(this.state.notes);
+    };
+
+    handleChange = e =>{
+      this.setState({ ...this.state, [e.target.name]: e.target.value });
     };
 
     render() {
@@ -86,26 +101,15 @@ class TimeControls extends Component {
             </div>);
         } else if (status === 'complete') {
             return ( <div>
-                <Button
-                    disabled={true}
-                    size={'massive'}
-                    positive
-                    icon
-                    onClick={this.endSession}
-                    labelPosition={'left'}>
-                    <Icon name={'stop'}/>
-                    STOP
-                </Button>
-                <Button
-                    disabled={true}
-                    size={'massive'}
-                    color={'teal'}
-                    icon
-                    onClick={this.pauseSession}
-                    labelPosition={'left'}>
-                    <Icon name={'pause'}/>
-                    PAUSE
-                </Button>
+                <Form reply onSubmit={this.submit}>
+                    <h3>Add session notes</h3>
+                    <Form.TextArea
+                        autoHeight={true}
+                        name='notes'
+                        onChange={this.handleChange}
+                        placeholder={'Add a small note/ message to describe what you have done...'}/>
+                    <Button content='Add note' labelPosition='left' icon='edit' type={'submit'} primary />
+                </Form>
             </div>);
         } else {
             return (

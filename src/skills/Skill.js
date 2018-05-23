@@ -14,8 +14,10 @@ class Skill extends Component {
 			session: {
 				status: 'new',
 				startTime: 0,
-				endTime: 0,
-				totalTime: 0
+				totalTime: 0,
+				startSession: 0,
+				endSession: 0,
+				notes: ''
 			}
 		};
 	};
@@ -27,10 +29,15 @@ class Skill extends Component {
 		}
     };
 
+	addNotes = (note) =>{
+		this.setState({ session: { ...this.state.session, notes: note }});
+	};
+
 	render() {
 		const skills = this.props.skills;
-		const { skill, session } = this.state;
+		const { session } = this.state;
 		if(skills.length > 0) {
+            const skill = this.props.skills.filter( skill => skill._id === this.props.match.params.id)[0];
 			return (
 				<div>
 					<Header as={'h1'}>
@@ -47,6 +54,7 @@ class Skill extends Component {
 							pauseSession={this.pauseSession}
 							resumeSession={this.resumeSession}
 							endSession={this.endSession}
+							addNotes={this.addNotes}
 							status={session.status}/>
 						<Label
 							pointing={'above'}
@@ -69,20 +77,20 @@ class Skill extends Component {
 
     startSession = () =>{
     	// Check for existing session
-		var time = 0;
-		if (this.state.session.status === 'new') {
-			// Start a new session
+		var time = 0, now = new Date().getTime();
+		if (this.state.session.startTime !== 0) {
+			time = this.getTimeDifference(now, this.state.session.startTime);
+            time += this.state.session.totalTime;
+            this.setState({ session: { ...this.state.session, startTime: now, status: 'in-progress', totalTime: time }});
+        } else {
+            this.setState({ session: { ...this.state.session, startTime: now, startSession: now, status: 'in-progress', totalTime: 0 }});
 		}
-		if (this.state.session.startTime !== 0)
-			time = this.getTimeDifference(new Date().getTime(), this.state.session.startTime);
-        time += this.state.session.totalTime;
-        this.setState({ session: { ...this.state.session, startTime: new Date().getTime(), status: 'in-progress', totalTime: time }});
     };
 
     pauseSession = () =>{
     	let time = this.getTimeDifference(new Date().getTime(), this.state.session.startTime);
     	time += this.state.session.totalTime;
-        this.setState({ session: { ...this.state.session, status: 'paused', totalTime: time }});
+        this.setState({ session: { ...this.state.session, startTime: new Date().getTime(), status: 'paused', totalTime: time }});
     };
 
     resumeSession = () =>{
@@ -92,7 +100,7 @@ class Skill extends Component {
     endSession = () =>{
         let time = this.getTimeDifference(new Date().getTime(), this.state.session.startTime);
         time += this.state.session.totalTime;
-        this.setState({ session: { ...this.state.session, status: 'complete', totalTime: time }});
+        this.setState({ session: { ...this.state.session, endSession: new Date().getTime(), startTime: new Date().getTime(), status: 'complete', totalTime: time }});
     };
 
     getTimeDifference = (etime, stime) => {
