@@ -24,9 +24,11 @@ class Skill extends Component {
 					</Header>
 					<div className="ui divider"/>
 					<CountDown/>
-					<Progress/>
+					<Progress skill={skill}/><br/>
 					<TimeControls/>
-					<Activities/>
+					<div className="ui divider"/>
+					<br/><br/>
+					<Activities skill={skill}/>
 				</div>
 			);
 		else

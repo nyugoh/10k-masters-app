@@ -10,7 +10,7 @@ class Activities extends Component {
                     <Comment>
                         <Comment.Group>
                             <Comment>
-                                <Icon style={{position: 'absolute', left: -40, top:20 }} color={'teal'} name={'crosshairs'}/>
+                                <Icon style={{position: 'absolute', left: -40, top:20, color: this.props.skill.theme }} name={'crosshairs'}/>
                                 <Comment.Content>
                                     <Comment.Author as='a'>Elliot Fu</Comment.Author>
                                     <Comment.Metadata>
@@ -25,7 +25,7 @@ class Activities extends Component {
                                 </Comment.Content>
                             </Comment>
                             <Comment>
-                                <Icon style={{position: 'absolute', left: -40, top:20}} name={'bullseye'} color={'teal'}/>
+                                <Icon style={{position: 'absolute', left: -40, top:20, color: this.props.skill.theme }} name={'bullseye'}/>
                                 <Comment.Content>
                                     <Comment.Author as='a'>Jenny Hess</Comment.Author>
                                     <Comment.Metadata>
@@ -39,7 +39,7 @@ class Activities extends Component {
                             </Comment>
 
                             <Comment>
-                                <Icon style={{position: 'absolute', left: -40, top:20 }} color={'teal'} name={'selected radio'}/>
+                                <Icon style={{position: 'absolute', left: -40, top:20, color: this.props.skill.theme }} name={'selected radio'}/>
                                 <Comment.Content>
                                     <Comment.Author as='a'>Joe Henderson</Comment.Author>
                                     <Comment.Metadata>
