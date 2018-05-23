@@ -13,8 +13,9 @@ class Skill extends Component {
 			skill: {},
 			session: {
 				status: 'new',
-				startTime: '',
-				endTime: ''
+				startTime: 0,
+				endTime: 0,
+				totalTime: 0
 			}
 		};
 	};
@@ -38,7 +39,8 @@ class Skill extends Component {
 					</Header>
 					<div className="ui divider"/>
 					<CountDown/>
-					<Progress skill={skill}/><br/>
+					<Progress skill={skill}/>
+					<br/>
 					<Segment className={'ui center aligned'} >
 						<TimeControls
 							startSession={this.startSession}
@@ -46,7 +48,11 @@ class Skill extends Component {
 							resumeSession={this.resumeSession}
 							endSession={this.endSession}
 							status={session.status}/>
-						<Label pointing={'above'} color={'green'}>{session.status}</Label>
+						<Label
+							pointing={'above'}
+							color={'green'}>
+							{session.status}
+						</Label>
 					</Segment>
 					<div className="ui divider"/>
 					<br/><br/>
@@ -62,20 +68,36 @@ class Skill extends Component {
 	};
 
     startSession = () =>{
-        this.setState({ session: { ...this.state.session, status: 'in-progress' }});
+    	// Check for existing session
+		var time = 0;
+		if (this.state.session.status === 'new') {
+			// Start a new session
+		}
+		if (this.state.session.startTime !== 0)
+			time = this.getTimeDifference(new Date().getTime(), this.state.session.startTime);
+        time += this.state.session.totalTime;
+        this.setState({ session: { ...this.state.session, startTime: new Date().getTime(), status: 'in-progress', totalTime: time }});
     };
 
     pauseSession = () =>{
-        this.setState({ session: { ...this.state.session, status: 'paused' }});
+    	let time = this.getTimeDifference(new Date().getTime(), this.state.session.startTime);
+    	time += this.state.session.totalTime;
+        this.setState({ session: { ...this.state.session, status: 'paused', totalTime: time }});
     };
 
     resumeSession = () =>{
-        this.setState({ session: { ...this.state.session, status: 'in-progress' }});
+        this.setState({ session: { ...this.state.session, status: 'in-progress', startTime: new Date().getTime() }});
     };
 
     endSession = () =>{
-        this.setState({ session: { ...this.state.session, status: 'complete' }});
+        let time = this.getTimeDifference(new Date().getTime(), this.state.session.startTime);
+        time += this.state.session.totalTime;
+        this.setState({ session: { ...this.state.session, status: 'complete', totalTime: time }});
     };
+
+    getTimeDifference = (etime, stime) => {
+    	return (parseInt(etime) - parseInt(stime));
+	};
 }
 
 const mapStateToProps = state => ({
