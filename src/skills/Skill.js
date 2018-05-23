@@ -11,6 +11,7 @@ class Skill extends Component {
 		super(props);
 		this.state = {
 			skill: {},
+			totalTime: 0,
 			session: {
 				status: 'new',
 				startTime: 0,
@@ -33,9 +34,15 @@ class Skill extends Component {
 		this.setState({ session: { ...this.state.session, notes: note }});
 	};
 
+	startCounter = total => {
+
+	};
+
 	render() {
 		const skills = this.props.skills;
 		const { session } = this.state;
+		if(session.status === 'in-progress')
+			this.startCounter(session.totalTime);
 		if(skills.length > 0) {
             const skill = this.props.skills.filter( skill => skill._id === this.props.match.params.id)[0];
 			return (
@@ -45,7 +52,9 @@ class Skill extends Component {
 						<Label tag={true} style={{backgroundColor:skill.theme}}>{skill.hours} Hours</Label>
 					</Header>
 					<div className="ui divider"/>
-					<CountDown/>
+					<CountDown
+						session={session}/>
+
 					<Progress
 						session={session}
 						skill={skill}/>

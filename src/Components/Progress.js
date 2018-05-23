@@ -18,7 +18,7 @@ class ProgressBar extends Component {
                     </Grid.Row>
                     <Grid.Row columns={1} centered>
                         <Grid.Column width={'ten'} className={'center aligned'}>
-                            <Progress value='4' total='5' progress='percent' style={{backgroundColor: this.props.skill.theme}} color={'green'} active={isActive} />
+                            <Progress value='1.2' total='5' progress='percent' style={{backgroundColor: this.props.skill.theme}} color={'green'} active={isActive} />
                             <Header as={'h4'}>Milestones achieved <Rating icon='star' defaultRating={1} maxRating={3} size={'massive'} disabled/></Header>
                         </Grid.Column>
                     </Grid.Row>
