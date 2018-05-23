@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Segment, Label, Header, Progress, Grid } from 'semantic-ui-react';
+import { Segment, Label, Header, Progress, Grid, Rating } from 'semantic-ui-react';
 
 class ProgressBar extends Component {
     render() {
@@ -15,8 +15,9 @@ class ProgressBar extends Component {
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row columns={1} centered>
-                        <Grid.Column width={'ten'}>
+                        <Grid.Column width={'ten'} className={'center aligned'}>
                             <Progress value='4' total='5' progress='percent' style={{backgroundColor: this.props.skill.theme}} color={'green'} active={true} />
+                            <Header as={'h4'}>Milestones achieved <Rating icon='star' defaultRating={1} maxRating={3} size={'massive'} disabled/></Header>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
